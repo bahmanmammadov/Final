@@ -1,0 +1,233 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/assets/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <!-- Karusel -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.2.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.2.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- Style -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="./~/assets/img/icon/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/libs/toastr.js/toastr.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @RenderSection("addcss", required: false);
+    <link href="~/libs/toastr.js/toastr.css" rel="stylesheet" />
+
+    <title>Barber Sayt</title>
+</head>
+<body>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+
+    <header class="site-navbar site-navbar-target" role="banner">
+
+        <div class="container-fluid">
+            <div class="row align-items-center position-relative">
+
+                <div class="col-3">
+                    <div class="site-logo">
+                        <a href="index.html"><img src="~/assets/img/logo/xlogo.png.pagespeed.ic.ZDKa8nnQDr.png" alt=""></a>
+                    </div>
+                </div>
+
+                <div class="col-9  text-right">
+
+
+                    <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+
+
+                    <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                            <li class="active"><a asp-controller="home" asp-action="index" class="nav-link">@LayoutResource.Home</a></li>
+
+
+
+
+                            <li><a asp-controller="home" asp-action="about" class="nav-link">@LayoutResource.About</a></li>
+                            <li><a asp-controller="service" asp-action="index" class="nav-link">@LayoutResource.Service</a></li>
+                            <li><a asp-controller="gallery" asp-action="index" class="nav-link">@LayoutResource.Gallery</a></li>
+                            <li><a asp-controller="blog" asp-action="index" class="nav-link">@LayoutResource.Blog</a></li>
+                            <li><a asp-controller="home" asp-action="contact" class="nav-link">@LayoutResource.Contact</a></li>
+
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+
+
+                                <li><a asp-controller="home" asp-action="signin" class="nav-link">@User.Identity.Name.ToUpper()</a></li>
+                                <li><a asp-controller="home" asp-action="logout" class="nav-link">Logout</a></li>
+
+                            }
+                            else
+                            {
+                                <li><a asp-controller="home" asp-action="signin" class="nav-link">Signin</a></li>
+                                <li><a asp-controller="home" asp-action="register" class="nav-link">Register</a></li>
+                            }
+
+                            <li>
+                                <a href="#" data-lang="az">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Flag_of_Azerbaijan.svg/188px-Flag_of_Azerbaijan.svg.png" style="width:45px;" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-lang="en">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/188px-Flag_of_the_United_Kingdom.svg.png" style="width:45px" />
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+            </div>
+        </div>
+
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+    @RenderBody();
+
+
+
+
+
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-wrapper">
+
+            <div class="container" style="height: 380px;">
+                <div class="row " style="display: flex; justify-content: space-between; ">
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6" style="margin-top:80px;">
+                        <div class="single-footer-caption " style="margin-left: -70px;">
+                            <div class="icon">
+                                <i class="fas fa-phone-alt" style="color: #fb0000; font-size: 20px; margin-bottom: 25px;"></i>
+                            </div>
+                            <div class="footer-tittle">
+                                <h4>
+                                    @LayoutResource.Contact_info
+                                </h4>
+                                <ul>
+                                    <li><a href="#">913-473-7000</a></li>
+                                    <li> <p> bahman@gmail.com </p></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6" style="margin-top:80px;">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption text-center mb-20">
+
+                                <div class="footer-logo mb-35">
+                                    <a href="index.html"><img src="./~/assets/img/logo/logo2_footer.png" alt=""></a>
+                                </div>
+                                <p style="line-height: 1.6;width: 300px; margin-top: 10px; margin-left: -20px;">There are many variations of passages of Lorem Ipsum available be the majority.</p>
+
+                                <div class="footer-social ">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6" style="margin-top:80px;">
+                        <div class="single-footer " style="margin-right: -100px;">
+                            <div class="icon">
+                                <i class="fas fa-location-arrow" style="color: #fb0000; font-size: 20px; margin-bottom: 25px;"></i>
+                            </div>
+                            <div class="footer-tittle">
+                                <h4 style="color: #fff;font-size: 20px;margin-bottom: 10px;font-weight: 700;
+                      text-transform: uppercase;">
+                                    @LayoutResource.Contact_info
+                                </h4>
+                                <ul>
+                                    <li style="color: #928888 ;margin-bottom: 5px; list-style-type:none; display: list-item;margin-left: -38px; margin-top: 4px;"><a href="#" style="color: #928888 ">913-473-7000</a></li>
+                                    <li style="color:#928888;;margin-bottom: 5px;list-style: none; display: list-item;margin-left: -38px; margin-top: 4px;">bahman@gmail.com</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </footer>
+
+
+
+
+    <script src="~/libs/jquery/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.sticky.js"></script>
+    <script src="~/libs/jquery-validate/jquery.validate.js"></script>
+    <script src="~/libs/toastr.js/toastr.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="~/libs/owl-carousel/dist/owl.carousel.min.js"></script>
+    <script src="~/assets/main.js"></script>
+
+    <script>
+
+            const lang = `@Context.GetCurrentLang()`;
+            const selectedlang = $(`[data-lang="${lang}"]`).text();
+            $('[data-lang-viewer="language"]').text(selectedlang);
+
+
+            $('[data-lang]').click(function (e) {
+                e.preventDefault();
+                let path = `${window.location.pathname}${window.location.search}`;
+                let selectclang = $(e.currentTarget).data('lang');
+                let result = /\/(en|az|ru)?\/?(.*)?/.exec(path);
+
+                if (result != null && result[2] != undefined) {
+                    path = `/${selectclang}/${result[2]}`;
+                }
+                else if (result != null) {
+                    path = `/${selectclang}`;
+                }
+                window.location.href = path;
+            });
+
+    </script>
+
+
+    @RenderSection("addjs", required: false)
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿@model Gallery
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>BlogPost</h4>
+    <hr />
+    <div style="display:flex">
+
+        
+        <div class="col-lg-8">
+            <img src="~/assets/img/gallery/@Model.ImagePath" class="image-fluid" />
+
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

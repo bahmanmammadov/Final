@@ -1,0 +1,457 @@
+﻿@model BlogPost
+
+
+
+
+@{ ViewData["Title"] = "Details";
+
+    IEnumerable<BlogPostComment> GetComments(BlogPostComment parent)
+    {
+        if (parent.ParentId != null)
+        {
+            yield return parent;
+        }
+
+        foreach (var item in parent.Children.SelectMany(c => GetComments(c)))
+        {
+            yield return item;
+        }
+    }
+}
+<div class="slider-area  position-relative">
+    <div class="contain">
+        <div class="contain">
+
+
+            <div class="single-slider" style="height: 500px;">
+                <div class="slider-cap-wrapper slider-height">
+                    <div class="hero-caption">
+                        <h1 data-animation="fadeInUp" data-delay=".4s" style="margin-top: 110px; font-size: 58px;">@LayoutResource.About</h1>
+
+                    </div>
+                    <div class="hero-img position-relative" style=" width: 850px;">
+                        <img src="~/assets/img/hero/xh1_hero1.jpg.pagespeed.ic.6xc7SWPsGQ.jpg" style="height:420px; width:100%" alt="" data-animation="pulse" data-transition-duration="5s">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="blog_area " style="margin-top: 50px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                    <div class="feature-img" style="margin-bottom: 20px;">
+                        <img class="img-fluid" src="~/assets/img/blog/@Model.ImagePath" alt="">
+                    </div>
+                    <div class="details">
+                        <h2>
+                            @Model.Title2
+                        </h2>
+                        <ul class="blog-info mt-3 mb-4">
+                            <li><a href="#" class="biriki"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                            <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                        </ul>
+
+
+                        <div class="deyisik">
+                            <div class="deyisik-yer">
+                                @Model.LargeBody
+                            </div>
+                        </div>
+
+                        <hr>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <div class="like-part">
+                        <p class="like-info">
+                            <span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
+                            people like this
+                        </p>
+                        <div class="col-sm-4 text-center my-2 my-sm-0">
+                        </div>
+                        <ul class="social-icons">
+                            <li><a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="navigation-area">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                <div class="thumb" style="    margin-right: 20px;">
+                                    <a href="#">
+                                        <img class="img-fluid" src="~/assets/img/post/preview.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#">
+                                        <span class="lnr text-white ti-arrow-left"></span>
+                                    </a>
+                                </div>
+                                <div class="detials">
+                                    <p>Prev Post</p>
+                                    <a href="#">
+                                        <h4 style="color: #2d2d2d;">Space The Final Frontier</h4>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr>
+
+                </div>
+                <div class="blog-sahibi">
+                    <div class="media align-items-center">
+                        <img src="~/assets/img/blog/author.png" alt="">
+                        <div class="body">
+                            <a href="#">
+                                <h4>Harvard milan</h4>
+                            </a>
+                            <p>
+                                Second divided from form fish beast made. Every of seas all gathered use saying you're, he
+                                our dominion twon Second divided from
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <h2 style="margin-top:50px">@Model.Comments.Count() Comments</h2>
+
+
+                <div class="comments">
+                    <ul id="faking" style="list-style-type:none;margin-left:-38px;margin-top:-190px">
+                        @foreach (var item in Model.Comments?.Where(a => a.ParentId == null))
+                        {
+                            <li style="margin-top:270px" class="comment" id="#c-@item.ID" data-comment-id="@item.ID">
+                                <figure class="comment-media">
+                                    <a href="#">
+                                        <img style="width:50px;height:16%;border-radius:50%;" src="~/assets/images/blog-single.jpg" alt="avatar">
+                                    </a>
+                                </figure>
+                                <div style="margin-top:-60px" class="comment-body">
+                                    <div class="comment-user">
+                                        <h4>
+                                            <a href="#">
+
+                                                @item.CreatedByUser?.UserName
+
+
+                                            </a>
+                                        </h4>
+                                        <span style="margin-top:12px;display:inline-block;color:#b7472a" class="comment-date">@item.CreatedTime.ToShortDateString()</span>
+                                    </div>
+
+                                    <div class="comment-content mb-2">
+                                        <p style="margin-top:7px">
+                                            @item.Comment
+                                        </p>
+                                    </div>
+                                    <a href="#" class="btn btn-link btn-reveal-right btn-comment-reply">
+                                        REPLY<i class="d-icon-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                            @foreach (var subComment in GetComments(item))
+                            {
+                                <li class="comment ml-10" id="#c-@subComment.ID" data-comment-id="@subComment.ID">
+                                    <figure class="comment-media">
+                                        <a href="#">
+                                            <img style="width:50px;height:16%;border-radius:50%;margin-left:30px;margin-top:135px" src="~/assets/images/blog-single.jpg" alt="avatar">
+                                        </a>
+                                    </figure>
+                                    <div style="margin-top:-60px" class="comment-body">
+                                        <div class="comment-user">
+                                            <h4>
+                                                <a style="margin-left:25px" href="#">
+
+
+                                                    @item.CreatedByUser?.UserName
+
+                                                </a>
+                                            </h4>
+                                            <span style="display:inline-block;color:#b7472a;margin-left:26px" class="comment-date">@subComment.CreatedTime.ToShortDateString()</span>
+
+                                        </div>
+
+                                        <div class="comment-content mb-2">
+                                            <a style="margin-left:26px" href="#c-@subComment.ParentId">@@@($"{subComment.Parent.CreatedByUser?.UserName}")</a> &nbsp; &nbsp;
+                                            <p style="margin-top:7px;margin-left:28px">
+                                                @subComment.Comment
+                                            </p>
+                                        </div>
+                                        <a href="#" class="btn btn-link btn-reveal-right btn-comment-reply">
+                                            REPLY<i class="d-icon-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            }
+                        }
+
+
+                    </ul>
+                </div>
+
+                <!-- End Comments -->
+                <div class="reply">
+                    <form method="post" id="replyForm">
+                        <div id="replyToComment"></div>
+                        <input type="hidden" name="postId" value="@Model.ID" />
+                        <textarea style="border:1px solid beige;display:inline-block;margin-top:115px" name="comment" cols="30" rows="6" class="form-control mb-4"
+                                  placeholder="Comment *" required></textarea>
+                        <button style="margin-top:10px" type="submit" class="btn btn-primary btn-rounded">
+                            POST COMMENT<i class="d-icon-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+                <!-- End Reply -->
+
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+
+                    <aside class="single_sidebar_widget popular_post_widget">
+                        <h3 class="widget_title" style="color: #2d2d2d;">Recent Post</h3>
+                        <hr>
+                        <div class="media post_item">
+                            <img src="~/assets/img/post/post_1.jpg" alt="post">
+                            <div class="media-body">
+                                <a href="blog_details.html">
+                                    <h3 style="color: #2d2d2d;">From life was you fish...</h3>
+                                </a>
+                                <p>January 12, 2019</p>
+                            </div>
+                        </div>
+                        <div class="media post_item">
+                            <img src="~/assets/img/post/post_2.jpg" alt="post">
+                            <div class="media-body">
+                                <a href="blog_details.html">
+                                    <h3 style="color: #2d2d2d;">The Amazing Hubble</h3>
+                                </a>
+                                <p>02 Hours ago</p>
+                            </div>
+                        </div>
+                        <div class="media post_item">
+                            <img src="~/assets/img/post/post_3.jpg" alt="post">
+                            <div class="media-body">
+                                <a href="blog_details.html">
+                                    <h3 style="color: #2d2d2d;">Astronomy Or Astrology</h3>
+                                </a>
+                                <p>03 Hours ago</p>
+                            </div>
+                        </div>
+                        <div class="media post_item">
+                            <img src="~/assets/img/post/post_4.jpg" alt="post">
+                            <div class="media-body">
+                                <a href="blog_details.html">
+                                    <h3 style="color: #2d2d2d;">Asteroids telescope</h3>
+                                </a>
+                                <p>01 Hours ago</p>
+                            </div>
+                        </div>
+                    </aside>
+                    <aside class="single_sidebar_widget tag_cloud_widget">
+                        <h4 class="widget_title" style="color: #2d2d2d; margin-bottom: -4px;">Tag Clouds</h4>
+                        <hr>
+                        <ul class="list">
+                            <li>
+                                <a href="#">project</a>
+                            </li>
+                            <li>
+                                <a href="#">love</a>
+                            </li>
+                            <li>
+                                <a href="#">technology</a>
+                            </li>
+                            <li>
+                                <a href="#">travel</a>
+                            </li>
+                            <li>
+                                <a href="#">restaurant</a>
+                            </li>
+                            <li>
+                                <a href="#">life style</a>
+                            </li>
+                            <li>
+                                <a href="#">design</a>
+                            </li>
+                            <li>
+                                <a href="#">illustration</a>
+                            </li>
+                        </ul>
+                    </aside>
+                    <aside class="single_sidebar_widget instagram_feeds">
+                        <h4 class="widget_title" style="color: #2d2d2d;">Instagram Feeds</h4>
+                        <hr>
+                        <ul class="instagram_row ">
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_5.jpg" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_6.jpg" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_7.jpg" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_8.jpg" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_9.jpg" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_10.jpg" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+                    <aside class="single_sidebar_widget newsletter_widget">
+                        <h4 class="widget_title" style="color: #2d2d2d;">Newsletter</h4>
+                        <hr>
+                        <form method="post" asp-controller="Home"
+                              asp-action="Subscrices"
+                              id="form"
+                              class="input-wrapper input-wrapper-inline" novalidate>
+                            <input type="email"
+                                   class="form-control"
+                                   name="email"
+                                   id="email"
+                                   data-rule-required="true"
+                                   data-msg-required="Email is required"
+                                   data-rule-email="true"
+                                   data-msg-email="Email must be in mail format"
+                                   placeholder="Email address here..." />
+                            <button class="btn btn-primary btn-rounded btn-md ml-2" type="submit">
+                                subscribe<i class="d-icon-arrow-right"></i>
+                            </button>
+
+                        </form>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+@section addjs{
+    <script src="~/libs/jquery/jquery.min.js"></script>
+    <script src="~/libs/jquery-validate/jquery.validate.js"></script>
+    @*<script src="~/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>*@
+    <script src="~/libs/toastr.js/toastr.min.js"></script>
+    <script>
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "7000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        // INPUT ERROR CIXARILMASI VALIDATION WITH
+
+        //$(document).ready(function () {
+        //    $('#form').validate({
+        //        errorElement: 'span', // Cixan eror label yox span etdih
+        //        // errorClass: 'is-invalid', // span error cixan zaman class
+        //        //  validClass: 'is-valid', // span error cixan zaman class input class
+        //        highlight: function (element, errorClass, validClass) {
+        //            $(element).addClass('is-invalid').remove('is-valid')// eger error varsa
+        //        },
+        //        unhighlight: function (element, errorClass, validClass) {
+        //            $(element).addClass('is-valid').remove('is-invalid') // eger error yoxdusa
+        //        },
+        //    });
+        //});
+
+
+        $(document).ready(function () {
+            $('#form').submit(function (e) {
+            e.preventDefault() // post dayandiriq
+            const formData = new FormData(e.currentTarget);
+            $.ajax({
+                url: '@Url.Action("Subscrices","home")', // URL HELPERLER
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,   //EGER FORM DATA AJAX FORMDATA KIMI GELIRSE FALSE
+                dataType: 'json',
+                beforeSend: function (gelenData) {
+                    console.log("before sending");
+                },
+                success: function (gelenData) {
+                        console.log(gelenData);
+                    if (gelenData.error == false) {
+                        toastr.success(gelenData.message, 'Successfully');
+                            e.currentTarget.reset();
+                            $(e.currentTarget).find('.is-invalid').removeClass('is-invalid');
+                            $(e.currentTarget).find('.is-valid').removeClass('is-valid');
+                        } else {
+                        toastr.error(gelenData.message, 'Error');
+                        }
+                },
+                error: function (gelenData) {
+                    console.log(gelenData);
+                    toastr.error('Email is not Database', 'Error');
+                    e.currentTarget.reset();
+                },
+            }).always(function () {
+                console.log("after sending");
+            });
+        });
+    });
+    </script>
+
+}
+
+@section addcss{
+    <link href="~/libs/toastr.js/toastr.css" rel="stylesheet" />
+    <style>
+        .is-invalid {
+            border: 1px solid #dc3545;
+        }
+
+            .is-invalid + span.error {
+                color: red;
+                font-size: 1rem;
+            }
+
+        .is-valid {
+            border: 1px solid teal;
+        }
+    </style>
+}
+
+
+

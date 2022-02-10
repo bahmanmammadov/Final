@@ -1,0 +1,66 @@
+.customer-section{
+    padding-top: 120px;
+    padding-bottom: 120px;
+    .section-tittle{
+        margin-bottom: 50px;
+        
+        h2{
+            font-family: "Chivo",sans-serif;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 12px;
+        }
+
+    }
+    .single-cat{
+        padding: 40px 46px 25px 46px;
+        border-right: 1px solid rgba(103,94,94,.2);
+
+    .top-part{
+        .reyting{
+            ul{
+                display: flex;
+                list-style: none;
+        margin-left: -80px;
+        li{
+            color: red;
+            margin-left: 4px;
+        }
+
+            }
+        }
+    }
+    }
+    p{
+        color: #150303;
+        font-size: 20px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+        font-weight: 300;
+        margin-left: -42px;
+        width: 350px;
+    }
+    .cat-img{
+        display: flex;
+        img{
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1.5;
+            color: #212529;
+            width: 40px;
+            height: 40px;
+        margin-left: -42px;
+
+        }
+        p{
+            color: #150303;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-top: 7px;
+        }
+    }
+}

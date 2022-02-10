@@ -1,0 +1,76 @@
+.single-slider{
+    background-color:  rgb(21,3,3);
+    .slider-cap-wrapper{
+    
+        display: flex;
+        justify-content: space-between;
+    }
+    .hero-caption{
+        margin-left: 130px;
+        margin-top: 90px;
+
+        
+        .btn {
+            background: #fb0000;
+            font-family: "Chivo",sans-serif;
+            text-transform: inherit!important;
+            padding: 32px 58px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            border-radius: 0;
+            line-height: 1;
+            line-height: 0;
+            cursor: pointer;
+            transition: color .4s linear;
+            position: relative;
+            z-index: 1;
+        }
+        .btn:hover{
+            background: white;
+            color: red;
+            font-family: "Chivo",sans-serif;
+            text-transform: inherit!important;
+            padding: 32px 58px;
+            
+            cursor: pointer;
+            display: inline-block;
+            line-height: 1;
+            line-height: 0;
+            cursor: pointer;
+            transition: color .4s linear;
+            position: relative;
+            z-index: 1;
+            border: 0;
+            overflow: hidden;
+        }
+        img{
+            margin-top: 70px;
+        }
+        h1{
+            color: #fff;
+    font-size: 80px;
+    font-weight: 800;
+    margin-bottom: 13px;
+    line-height: 1;
+    display: block;
+        }
+        p{
+            margin-bottom: 36px;
+    display: block;
+    font-size: 24px;
+    padding-right: 50px;
+    color: #fff;
+    line-height: 1.4;
+    font-weight: 400;
+        }
+        
+    }
+    .hero-img{
+        margin-top: 80px;
+        img{
+            height: 650px;
+        }
+
+    }
+}

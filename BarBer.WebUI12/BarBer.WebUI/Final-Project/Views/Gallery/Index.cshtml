@@ -1,0 +1,64 @@
+﻿@model List<Gallery>
+<div class="slider-area  position-relative">
+    <div class="contain">
+
+
+        <div class="single-slider" style="height: 500px;">
+            <div class="slider-cap-wrapper slider-height">
+                <div class="hero-caption">
+                    <h1 data-animation="fadeInUp" data-delay=".4s" style="margin-top: 110px; font-size: 58px;">@LayoutResource.Gallery</h1>
+
+                </div>
+                <div class="hero-img position-relative" style=" width: 850px;">
+                    <img src="~/assets/img/hero/xh1_hero1.jpg.pagespeed.ic.6xc7SWPsGQ.jpg" style="height:420px; width:100%" alt="" data-animation="pulse" data-transition-duration="5s">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="gallery" style="margin-top: 20px;">
+    <div class="container">
+        <div class="row " style="justify-content: center;">
+            <div class="col-xl-120">
+                <div class="section-tittle bhmn ">
+                    <hr style="height: 4px;width: 55px; background-color: red; ">
+                    <h2>Gallery</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-gallery">
+                        <img src="~/assets/img/gallery/@item.ImagePath" alt="" class="w-100">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+
+            const lang = `@Context.GetCurrentLang()`;
+            const selectedlang = $(`[data-lang="${lang}"]`).text();
+            $('[data-lang-viewer="language"]').text(selectedlang);
+
+
+            $('[data-lang]').click(function (e) {
+                e.preventDefault();
+                let path = `${window.location.pathname}${window.location.search}`;
+                let selectclang = $(e.currentTarget).data('lang');
+                let result = /\/(en|az|ru)?\/?(.*)?/.exec(path);
+
+                if (result != null && result[2] != undefined) {
+                    path = `/${selectclang}/${result[2]}`;
+                }
+                else if (result != null) {
+                    path = `/${selectclang}`;
+                }
+                window.location.href = path;
+            });
+</script>

@@ -1,0 +1,204 @@
+.single-post{
+    margin-top: 20px;
+    .details{
+        h2{
+            color: #2d2d2d;
+            font-size: 20px;
+            font-weight: 800;
+        }
+       
+       
+        
+        .blog-info{
+
+            list-style: none;
+            display: flex;
+            margin-left: -47px;
+            li{
+                font-size: 14px;
+        margin-left: 8px;
+        float: left;
+            }
+            a{
+                color: #999;
+            }
+            .biriki::after {
+                content: "|";
+                padding-left: 10px;
+                padding-right: 10px;
+        }
+        
+        }
+        .deyisik{
+            line-height: 1.733;
+            color: #888;
+            font-style: italic;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            background: rgba(130,139,178,.1);
+            .deyisik-yer{
+                padding: 25px 25px 25px 30px;
+                border-left: 2px solid;
+
+            }
+        }
+        p{
+            margin-bottom: 20px;
+    font-size: 15px;
+    color: black;
+        }
+    }
+}
+.navigation{
+    .like-part{
+        display: flex;
+        justify-content: space-between;
+        p{
+            color: #675e5e;
+            font-size: 16px;
+            line-height: 30px;
+            margin-bottom: 15px;
+            font-weight: normal;
+            line-height: 1.4;
+        }
+    }
+    .social-icons{
+        display: flex;
+        list-style: none;
+        li{
+            margin-right: 15px;
+            a{
+             color: #212529;
+
+            }
+            a:hover{
+                color: red;
+            }
+        }
+    }
+    .navigation-area{
+        .detials{
+            P{
+                color: #675e5e;
+                font-size: 16px;
+                line-height: 30px;
+                margin-bottom: 15px;
+                font-weight: normal;
+                line-height: 1.4;
+            }
+            h4{
+                font-size: 16px;
+                line-height: 25px;
+                color: #2d2d2d;
+                font-weight: 700;
+
+            }
+        }
+    }
+}
+
+.blog-sahibi{
+    padding: 40px 30px;
+    background: #fbf9ff;
+    margin-top: 50px;
+    .body{
+        margin-left: 18px;
+        margin-top: 8px;
+        h4{
+            font-size: 16px;
+    font-family: "Chivo",sans-serif;
+    color: #150303;
+    margin-top: 0;
+    font-style: normal;
+    font-weight: 500;
+        }
+        p{
+            color: #675e5e;
+            font-size: 15px;
+        }
+    }
+}
+
+.comment{
+    margin-bottom: 30px;
+    .single-comment{
+        display: flex;
+        justify-content: space-between;
+        .user{
+            display: flex;
+            justify-content: space-between;
+
+            .desc{
+                .comment{
+
+                    margin-bottom: 10px;
+                    color: #777;
+                    font-size: 15px;
+                }
+            }
+            a{
+                font-size: 16px;
+                margin-bottom: 0;
+           
+                font-family: "Chivo",sans-serif;
+                color: #150303;
+                margin-top: 0;
+                font-style: normal;
+                font-weight: 500;
+                margin-left: 19px;
+            }
+            p{
+                font-size: 14px;
+    color: #999;
+    margin-bottom: 0;
+    margin-left: 20px;
+            }
+        }
+        .btn-replay{
+            color: #888;
+    padding: 5px 18px;
+    font-size: 14px;
+    display: block;
+    font-weight: 400;
+}
+        }
+    
+}
+
+
+.comment-form{
+    h4{
+        margin-top: 45px;
+        margin-bottom: 40px;
+        font-size: 18px;
+        line-height: 22px;
+    
+    }
+
+    .form-group{
+
+        margin-bottom: 30px;
+        border: none;
+        .button-contactForm{
+            background: #fff;
+    color: #fb0000!important;
+    display: inline-block;
+    padding: 18px 44px;
+    font-family: "Chivo",sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    border: 0;
+    border: 1px solid #fb0000;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #fb0000;
+    text-transform: uppercase;
+        }
+        .button-contactForm:hover{
+            background: #fb0000;
+            color: #fff!important;
+            transition-duration:0.5s ;
+        }
+    }
+}
+

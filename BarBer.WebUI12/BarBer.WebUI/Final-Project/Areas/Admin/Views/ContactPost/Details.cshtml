@@ -1,0 +1,65 @@
+﻿@model Contact
+
+@{ ViewData["Title"] = "Details"; }
+
+<h1 style="text-align:center;color:red;">ContactPost</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                </div>
+                <input type="text" disabled class="form-control" placeholder="@Model.Name" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                </div>
+                <input type="text" disabled class="form-control" placeholder="@Model.Email" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Subject</span>
+                </div>
+                <input type="text" disabled class="form-control" placeholder="@Model.FullName" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Content</span>
+                </div>
+                <input type="text" disabled class="form-control" placeholder="@Model.Content" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<dd class="col-4 " id="form-answer" style="display:none">
+    <form method="post" asp-controller="ContactPost" asp-action="Answer">
+        <textarea name="Answer" class="form-control" placeholder="birseyler yazin"></textarea>
+        <input type="hidden" asp-for="ID" />
+        <button class="btn btn-primary">Cavabla</button>
+    </form>
+</dd>
+<div>
+    <a style="margin-left:16px;" class="btn btn-outline-dark" asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" id="btnReply">Reply</a>
+</div>
+
+@section addjs{
+
+    <script>$(document).ready(function () {
+
+            $('#btnReply').click(function (e) {
+                e.preventDefault();
+
+                $('#form-answer').show();
+
+            })
+
+        })</script>
+
+}
